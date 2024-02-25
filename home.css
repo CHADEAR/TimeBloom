@@ -8,34 +8,53 @@
     text-decoration: none;
     list-style: none;
     color: rgb(79, 79, 79);
+    
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/cv-appmobile.appspot.com/o/bg-phg2.png?alt=media&token=f6c67c30-603d-48ce-8ed7-34597c442300');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 main{
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: absolute; 
+}
+
+.timebloom span{
+    font-size: 25px;
+    display: flex;
+    margin-top: 30px;
+    margin-left: 45%;
 }
 
 .section-top{
     width: 100%;
-    height: 83vh;
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/cv-appmobile.appspot.com/o/bg-desk%20(1).png?alt=media&token=8a00b63d-d1a3-45a8-85cb-85cd1c48205a');
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 80vh;
     position: relative;
 }
 
 
 .flowerbox{
-    width: 400px;
-    height: 55vh;
+    width: 300px;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 50%;
+    top: 60%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -50%);
+}
+
+.flowerbox img{
+    width: 12rem;
 }
 
 .slide-tab{
@@ -49,16 +68,19 @@ main{
 
 footer{
     position: relative;
-    width: 100%;
-    height: 17vh;
-    background-color: rgb(151, 199, 171);
+    width: 65%;
+    min-width: 300px;
+    height: 15vh;
+    background: transparent;
+    left: 16%;
+    bottom: 2%;
 }
 
 .session-bottom{
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 255, 162);
-    border-radius: 30px 30px 0px 0px;
+    background-color: rgb(255, 255, 233);
+    border-radius: 30px 30px 30px 30px;
     position: absolute;
 }
 
@@ -73,12 +95,13 @@ footer{
 
 .timetext{
     position: relative;
-    width: 250px;
+    max-width: 200px;
     height: 6vh;
-    background-color: rgb(255, 255, 162);
+    background-color: rgb(255, 255, 233);
     border-radius: 30px 30px 0px 0px;
-    top: -30px;
-    left: 42%;
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
 }
 
@@ -91,26 +114,32 @@ footer{
 
 .session{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0px 30%;
+    position: relative;
+    top: 11%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .time button{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
-    width: 10vw;
-    height: 6vh;
-    padding: 20px 5px;
+    border: 1px solid rgba(82, 60, 31, 0.822);
+    max-width: 100px;
+    height: 7vh;
     position: relative;
-    bottom: 10%;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
-    background: transparent;
-    /* backdrop-filter: blur(15px); */
+    /* background: transparent;
+    backdrop-filter: blur(15px); */
     font-size: 20px;
+    background-color: rgb(249, 252, 212);
 }
+
+
+
+
