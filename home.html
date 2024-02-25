@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="home.css">
+    <!-- <script src="script.js"></script> -->
+</head>
+<body>
+    <main>
+        <div class="section-top">
+            <div class="flowerbox">
+                <img src="https://firebasestorage.googleapis.com/v0/b/cv-appmobile.appspot.com/o/flower1.1.gif?alt=media&token=b0c1aff4-6292-4b4e-bf5f-1d11e151205b" >
+            </div>
+
+            <div class="slide-tab">
+               <i class='bx bxs-left-arrow' ></i>
+               <i class='bx bxs-right-arrow' ></i>
+            </div>
+           </div>
+           <footer>
+               <div class="session-bottom">
+                  <div class="timetext">
+                     <span>1 HOUR</span> 
+                  </div>
+                  <div class="session">
+                    <div class="time">
+                        <button id="start" type="button">START</button>
+                     </div>     
+                     <div class="music">
+                        ..
+                     </div> 
+                  </div>
+               </div>
+           </footer>
+    </main>    
+
+    <script>
+        function countdownTimer() {
+    var button = document.getElementById('start');
+    var startTime = Date.now();
+    var duration = 60 * 60 * 1000; // 1 hour in milliseconds
+
+    function updateTimer() {
+        var elapsedTime = Date.now() - startTime;
+        var remainingTime = duration - elapsedTime;
+
+        if (remainingTime <= 0) {
+            clearInterval(timerInterval);
+            button.textContent = 'START'; // Change button text back to 'Start' when countdown ends
+        } else {
+            var hours = Math.floor(remainingTime / 3600000);
+            var minutes = Math.floor((remainingTime % 3600000) / 60000);
+            var seconds = Math.floor((remainingTime % 60000) / 1000);
+            button.textContent = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'); // Display time remaining in button
+        }
+    }
+
+    updateTimer(); // Update immediately upon start
+    var timerInterval = setInterval(updateTimer, 1000); // Update every second
+}
+
+document.getElementById('start').addEventListener('click', countdownTimer);
+    </script>
+</body>
+</html>
