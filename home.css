@@ -68,12 +68,12 @@ main{
 
 footer{
     position: relative;
-    width: 65%;
+    width: 50%;
     min-width: 300px;
     height: 15vh;
     background: transparent;
-    left: 16%;
-    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, -15%);
 }
 
 .session-bottom{
@@ -100,7 +100,7 @@ footer{
     background-color: rgb(255, 255, 233);
     border-radius: 30px 30px 0px 0px;
     top: -5px;
-    left: 50%;
+    left: 51%;
     transform: translate(-50%, -50%);
     display: flex;
 }
@@ -154,7 +154,7 @@ footer{
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    row-gap: 5px;
+    row-gap: 7px;
 }
 
 
