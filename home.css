@@ -115,7 +115,6 @@ footer{
 .session{
     display: flex;
     width: 100%;
-    background-color: antiquewhite;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
@@ -147,13 +146,17 @@ footer{
     border: none;
     color: rgb(72, 72, 72);
     cursor: pointer;
-    font-size: 30px;
+    font-size: 23px;
 }
 
 .music{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
+    align-items: center;
+    row-gap: 5px;
 }
+
+
 
 
