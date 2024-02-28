@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "firebase-TimeBloom",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <main>
+        <div class="section-top">
+            <a href="./login-register.html">register</a>
+            <div class="timebloom">
+                <span>TimeBloom</span>
+            </div>
+            <div class="flowerbox">
+                <img src="https://firebasestorage.googleapis.com/v0/b/cv-appmobile.appspot.com/o/flower1.1.gif?alt=media&token=b0c1aff4-6292-4b4e-bf5f-1d11e151205b" >
+            </div>
+
+            <div class="slide-tab">
+               <a href="#"><i class='bx bxs-left-arrow' ></i></a>
+               <a href="home.html"><i class='bx bxs-right-arrow' ></i></a>
+            </div>
+           </div>
+           <footer>
+               <div class="session-bottom">
+                  <div class="timetext">
+                     <span>1 HOUR</span> 
+                  </div>
+                  <div class="session">
+                    <div class="time">
+                        <button id="start" type="button">START</button>
+                     </div>     
+                     <div class="music">
+                        <span class="playing">Now playing :  <span class="song-name"></span></span>
+                        <div class="controls">
+                          <button class="btn previous"><i class="ph-bold ph-skip-back"></i></button>
+                          <button class="btn play-pause">
+                            <i id="play-pause-icon" class="ph-bold ph-play"></i>
+                          </button>
+                          <button class="btn next"><i class="ph-bold ph-skip-forward"></i></button>
+                        </div>
+                     </div> 
+                  </div>
+               </div>
+           </footer>
+    </main>    
+
+    <script>
+        function countdownTimer() {
+    var button = document.getElementById('start');
+    if (button.disabled) {
+        return; // ถ้าปุ่มถูกปิดใช้งานแล้ว ให้ไม่ทำอะไรเพิ่มเติม
+    }
+    button.disabled = true; // ปิดใช้งานปุ่มเพื่อป้องกันการกดซ้ำ
+    var startTime = Date.now();
+    var duration = 60 * 60 * 1000; // 1 hour in milliseconds
+
+    function updateTimer() {
+        var elapsedTime = Date.now() - startTime;
+        var remainingTime = duration - elapsedTime;
+
+        if (remainingTime <= 0) {
+            clearInterval(timerInterval);
+            button.textContent = 'START'; // Change button text back to 'Start' when countdown ends
+            button.disabled = false; // เปิดใช้งานปุ่มอีกครั้งหลังจากนับถอยหลังเสร็จสิ้น
+        } else {
+            var hours = Math.floor(remainingTime / 3600000);
+            var minutes = Math.floor((remainingTime % 3600000) / 60000);
+            var seconds = Math.floor((remainingTime % 60000) / 1000);
+            button.textContent = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'); // Display time remaining in button
+
+            // Check if 10 seconds have passed
+            if (elapsedTime >= 5000) {
+                var flowerImg = document.querySelector('.flowerbox img');
+                flowerImg.src = "https://firebasestorage.googleapis.com/v0/b/cv-appmobile.appspot.com/o/flower1.3.gif?alt=media&token=7e903ada-0541-4f81-b657-b9d209eab9ea";  // Change image source
+            }
+        }
+    }
+
+    updateTimer(); // Update immediately upon start
+    var timerInterval = setInterval(updateTimer, 1000); // Update every second
+}
+
+document.getElementById('start').addEventListener('click', countdownTimer);
+
+    </script>
+</body>
+</html>
