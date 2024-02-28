@@ -6,10 +6,14 @@
     sans-serif;
 }
 body{
-    background: url(back.jpg);
+    background: url(back1.gif);
+    background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     min-height: 100vh;
     overflow: hidden;
+    filter: brightness(60%);
 }
 .form{
     height: 100%;
@@ -25,14 +29,14 @@ body{
     margin: 5% auto;
     background-color: rgba(255, 255, 255, 0.336);
     border: 1px solidrgba(255, 255, 255, 0.196);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(ุ20px);
     padding: 10px;
     border-radius: 2em;
     overflow: hidden;
 }
 .button-box{
     width: 220px;
-    margin: 35px auto;
+    margin: 60px auto;
     position: relative;
     background-color: rgba(255, 255, 255, 0.209);
     box-shadow: 0 0 10px 5px #0000003b;
@@ -58,7 +62,7 @@ body{
     position: absolute;
     width: 110px;
     height: 100%;
-    background: white;
+    background: rgb(246, 242, 212);
     border-radius: 30px;
     transition: 0.5s;
 }
@@ -71,7 +75,7 @@ body{
 }
 .input-field{
     width: 100%;
-    padding: 10px 0;
+    padding: 10px 10px 10px 30px;
     margin: 5px 0;
     border-left: 0;
     border-top: 0;
@@ -88,7 +92,7 @@ body{
     display: block;
     margin: auto;
     color: black;
-    background: white;
+    background: rgb(246, 242, 212);
     border: 0;
     outline: none;
     border-radius: 30px;
@@ -108,7 +112,7 @@ span{
     font-size: 12px;
     bottom: 68px;
     position: absolute;
-    color: #5c5a5ac7;    /*I agree...*/
+    color: #201543e3;    /*I agree...*/
 }
 #login{
     left: 50px;
@@ -118,8 +122,40 @@ span{
     left: 458px;
 }
 input::placeholder{
-    color: #5c5a5ac7;     /*User,email,...*/
+    color: #141212;     /*User,email,...*/
 }
 .terms{
     color: white;
+}
+.input-icons{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.input-icons i{
+    position: absolute;
+}
+.icon{
+    padding: 10px;
+    color: #100d0df5;
+}
+
+@media screen and (max-width: 767px) {
+    .team-member img {
+width: 256px;
+height: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .team-member {
+        display: flex;
+    }
+    .team-member img {
+width: 150px;
+height: auto;
+margin-right: 20px;
+    }
+    .team-member .info {
+flex: 1;
+    }
 }

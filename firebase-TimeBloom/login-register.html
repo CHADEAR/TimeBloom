@@ -7,10 +7,10 @@
      initial-scale=1.0">
     <title>Login-Register</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" rel="stylesheet">
 </head>
 <body>
-    <div class="form">   
+    <div class="form">
         <div class="form-box">
             <div class="button-box">
                 <div id="btn"></div>
@@ -18,20 +18,34 @@
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
             <form id="login" class="input-group">
-                <input type="text" class="input-field" placeholder="Username" required>
-                <input type="text" class="input-field" placeholder="Enter Password" required>
-                <input type="checkbox" class="check-box">
-                <span>Remember Password</span>
-                <button type="submit" class="submit-btn">Log IN</button>
+                <div class="input-icons">
+                    <i class="ri-user-line icon"></i>
+                    <input type="text" class="input-field" placeholder="Username" required>
+                </div>
+                <div class="input-icons">
+                    <i class="ri-lock-line icon"></i>
+                    <input type="password" class="input-field" placeholder="Enter Password" required>
+                </div>
+                    <input type="checkbox" class="check-box">
+                    <span>Remember Password</span>
+                    <button type="submit" class="submit-btn">Log IN</button>
             </form>
 
             <form id="register" class="input-group">
-                <input type="text" class="input-field" placeholder="Username" required>
-                <input type="email" class="input-field" placeholder="Email" required>
-                <input type="text" class="input-field" placeholder="Enter Password">
-                <input type="checkbox" class="check-box">
-                <span>I agree to the <a href="#">Terms & Services</a></span>
-                <button type="submit" class="submit-btn">Log In</button>
+                <div class="input-icons">
+                    <i class="ri-user-line icon"></i>
+                    <input type="text" class="input-field" placeholder="Username" required>
+                </div>
+                <div class="input-icons">
+                    <i class="ri-mail-line icon"></i>
+                    <input type="password" class="input-field" placeholder="Enter Password" required>
+                </div>
+                <div class="input-icons">
+                    <i class="ri-lock-line icon"></i>
+                    <input type="password" class="input-field" placeholder="Enter Password" required>
+                </div>
+                    <button type="submit" class="submit-btn">Log In</button>
+                </div>
             </form>
         </div>
     </div>
