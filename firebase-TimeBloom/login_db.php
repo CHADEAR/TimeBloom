@@ -30,7 +30,18 @@
                     if ($username == $row['username']) {
                         if (password_verify($password, $row['password'])) {
                             $_SESSION['user_login'] = $row['id'];
-                                header("location: index.html");
+                            if(!empty($_POST['remember'])){
+                                setcookie('user_login',$_POST['username']);
+                                setcookie('user_password',$_POST['password']);
+                            } else {
+                                if (isset($_COOKIE['user_login'])){
+                                    setcookie('user_login','');
+
+                                    if(isset($_COOKIE['user_login']))
+                                        setcookie('user_password','');
+                                }
+                            }
+                            header("location: index.html");
                         } else {
                             $_SESSION['error'] = 'รหัสผ่านผิด';
                             header("location: login-register.php");
