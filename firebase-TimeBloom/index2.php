@@ -24,7 +24,7 @@
             <img src="./public/webapp-logo.png" class="logo">
         <a href="./todo.php"><i class='bx bx-menu'></i></a>
         </div>
-        <button class="logout">logout</button>
+        <input type="button" class="logout" onclick="window.location.href='logout.php'" value="logout">
     </nav>
     <main>
         <section class="top">
