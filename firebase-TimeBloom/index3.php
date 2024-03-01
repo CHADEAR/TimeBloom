@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user_login'])) {
+      header("location: login-register.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

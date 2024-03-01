@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user_login'])) {
+      header("location: login-register.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,7 +17,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
-    <nav><a href="index.html"><i class='bx bxs-x-circle'></i></a></nav>
+    <nav><a href="index.php"><i class='bx bxs-x-circle'></i></a></nav>
     <div class="wrapper">
       <div class="task-input">
         <i class="ri-checkbox-line icon"></i>
