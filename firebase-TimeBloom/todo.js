@@ -1,4 +1,5 @@
-const taskInput = document.querySelector(".task-input input"),
+const taskInput = document.querySelector(".task-input input")
+const addButton = document.querySelector(".add-text"),
 filters = document.querySelectorAll(".filters span"),
 clearAll = document.querySelector(".clear-btn"),
 taskBox = document.querySelector(".task-box");
@@ -79,9 +80,9 @@ clearAll.addEventListener("click", () => {
     localStorage.setItem("todo-list", JSON.stringify(todos));
     showTodo()
 });
-taskInput.addEventListener("keyup", e => {
+addButton.addEventListener("click", () => {
     let userTask = taskInput.value.trim();
-    if(e.key == "Enter" && userTask) {
+    if(userTask) {
         if(!isEditTask) {
             todos = !todos ? [] : todos;
             let taskInfo = {name: userTask, status: "pending"};
