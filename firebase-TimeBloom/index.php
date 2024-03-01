@@ -1,3 +1,12 @@
+<?php
+    /*session_start();
+    if (!isset($_SESSION['user_login'])) {
+      header("location: login-register.php");
+    }*/
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,9 +25,9 @@
     <nav>
       <div class="leftside-nav">
         <img src="./public/webapp-logo.png" class="logo" />
-        <a href="./todo.html"><i class="bx bx-menu"></i></a>
+        <a href="./todo.php"><i class="bx bx-menu"></i></a>
       </div>
-      <button class="logout">logout</button>
+      <input type="button" class="logout" onclick="window.location.href='logout.php'" value="logout">
     </nav>
     <main>
       <section class="top">
@@ -26,12 +35,12 @@
         <h2>Let's start</h2>
       </section>
       <section class="flowerbox">
-        <a href="./index3.html"><i class="bx bxs-left-arrow"></i></a>
+        <a href="./index3.php"><i class="bx bxs-left-arrow"></i></a>
         <div class="meshpic">
           <img src="./public/t1.gif" class="flower" />
           <img src="./public/island.png" class="island" />
         </div>
-        <a href="./index2.html"><i class="bx bxs-right-arrow"></i></a>
+        <a href="./index2.php"><i class="bx bxs-right-arrow"></i></a>
       </section>
       <button class="start-stop" id="END">START</button>
     </main>
@@ -74,7 +83,7 @@
           remainingTime = 1800;
           timerDisplay.textContent = "Let's start";
           flowerImg.src = "./public/t1.gif"; //fade 1
-          window.location.href = "./index.html";
+          window.location.href = "./index.php";
         } else {
           if (timerDisplay.textContent === "Good job!") {
             // Reset everything when END is clicked
@@ -83,7 +92,7 @@
             remainingTime = 1800;
             timerDisplay.textContent = "Let's start";
             flowerImg.src = "./public/t1.gif"; //fade 1
-            window.location.href = "./index.html";
+            window.location.href = "./index.php";
           } else {
             button.textContent = "EXIT";
             isTimerRunning = true;
@@ -137,3 +146,4 @@
     </script>
   </body>
 </html>
+

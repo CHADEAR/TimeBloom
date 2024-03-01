@@ -41,7 +41,7 @@
                                         setcookie('user_password','');
                                 }
                             }
-                            header("location: index.html");
+                            header("location: index.php");
                         } else {
                             $_SESSION['error'] = 'รหัสผ่านผิด';
                             header("location: login-register.php");

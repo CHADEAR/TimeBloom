@@ -14,7 +14,7 @@
     <nav>
         <div class="leftside-nav">
             <img src="./public/webapp-logo.png" class="logo">
-        <a href="./todo.html"><i class='bx bx-menu'></i></a>
+        <a href="./todo.php"><i class='bx bx-menu'></i></a>
         </div>
         <button class="logout">logout</button>
     </nav>
@@ -24,12 +24,12 @@
             <h2>Let's start</h2>
         </section>
         <section class="flowerbox">
-            <a href="./index2.html"><i class='bx bxs-left-arrow'></i></a>
+            <a href="./index2.php"><i class='bx bxs-left-arrow'></i></a>
             <div class="meshpic">
                 <img src="./public/s1.gif" class="flower">
                 <img src="./public/island.png" class="island"> 
             </div>
-            <a href="./index.html"><i class='bx bxs-right-arrow' ></i></a>
+            <a href="./index.php"><i class='bx bxs-right-arrow' ></i></a>
         </section>
         <button class="start-stop" id="END"> START </button>
     </main>
@@ -66,7 +66,7 @@
         remainingTime = 5400;
         timerDisplay.textContent = 'Let\'s start';   
         flowerImg.src = "./public/s1.gif"; //fade 1
-        window.location.href = './index3.html';
+        window.location.href = './index3.php';
         
     } else {
         if (timerDisplay.textContent === 'Good job!') {
@@ -76,7 +76,7 @@
             remainingTime = 5400;
             timerDisplay.textContent = 'Let\'s start';
             flowerImg.src = "./public/s1.gif";//fade 1
-            window.location.href = './index3.html';
+            window.location.href = './index3.php';
 
         } else {
             button.textContent = 'EXIT';

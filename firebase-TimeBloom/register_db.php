@@ -32,7 +32,7 @@
                 $row = $check_email->fetch(PDO::FETCH_ASSOC);
 
                 if ($row['email'] == $email) {
-                    $_SESSION['warning'] = "มีอีเมลนี้อยู่ในระบบแล้ว <a href='login-register.php'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
+                    $_SESSION['warning'] = "มีอีเมลนี้อยู่ในระบบแล้ว";
                     header("location: login-register.php");
                 } else if (!isset($_SESSION['error'])) {
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -42,7 +42,7 @@
                     $stmt->bindParam(":email", $email);
                     $stmt->bindParam(":password", $passwordHash);
                     $stmt->execute();
-                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว! <a href='login-register.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
+                    $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว!";
                     header("location: login-register.php");
                 } else {
                     $_SESSION['error'] = "มีบางอย่างผิดพลาด";

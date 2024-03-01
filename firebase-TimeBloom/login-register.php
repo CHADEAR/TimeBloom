@@ -13,7 +13,7 @@
     content="width=device-width,
      initial-scale=1.0">
     <title>Login-Register</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login-register.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" rel="stylesheet">
 </head>
 <body>
@@ -43,13 +43,13 @@
             <?php } ?>
                 <div class="input-icons">
                     <i class="ri-user-line icon"></i>
-                    <input type="text" class="input-field" name="username" placeholder="Username" required>
+                    <input type="text" class="input-field" value="<?php if (isset($_COOKIE['user_login'])) { echo $_COOKIE['user_login'];} ?>" name="username" placeholder="Username" required>
                 </div>
                 <div class="input-icons">
                     <i class="ri-lock-line icon"></i>
-                    <input type="password" class="input-field" name="password" placeholder="Enter Password" required>
+                    <input type="password" class="input-field" value="<?php if (isset($_COOKIE['user_password'])) { echo $_COOKIE['user_password'];} ?>" name="password" placeholder="Enter Password" required>
                 </div>
-                    <input type="checkbox" class="check-box" name="remember">
+                    <input type="checkbox" class="check-box" name="remember" <?php if(isset($_COOKIE['user_login'])) { ?> checked <?php } ?> >
                     <span>Remember Password</span>
                     <button type="submit" class="submit-btn" name="login">Log IN</button>
             </form>
