@@ -7,10 +7,24 @@
     font-weight: 400;
     font-style: normal;
 }
+
+nav{
+    width: 100%;
+}
+
+nav i{
+    font-size: 30px;
+    color: #ffffff;
+    position: relative;
+    left: 90%;
+    top: 0%;
+    transform: translate(-50%, 100%);
+}
+
 body{
     height: 100vh;
     overflow: hidden;
-    background: url(b11.gif);
+    background: url(./public/bg1.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
