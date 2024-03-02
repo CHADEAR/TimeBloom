@@ -1,9 +1,5 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['user_login'])) {
-      header("location: login-register.php");
-    }
-
+$soundPath = "/TImeBloom/sound/";
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +10,6 @@
     <link rel="stylesheet" href="index.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="./script.js" defer></script>
     <title>HOME</title>
 
 </head>
@@ -24,7 +19,7 @@
             <img src="./public/webapp-logo.png" class="logo">
         <a href="./todo.php"><i class='bx bx-menu'></i></a>
         </div>
-        <input type="button" class="logout" onclick="window.location.href='logout.php'" value="logout">
+        <button class="logout">logout</button>
     </nav>
     <main>
         <section class="top">
@@ -43,7 +38,7 @@
     </main>
     <footer>
         <section class="bottom">
-            <img src="#" class="musicpic">
+            <img src="./public/m1.gif" class="musicpic" />
             <div class="music">
                 <span class="playing">Now playing :  <span class="song-name"></span></span>
                 <div class="controls">
@@ -58,88 +53,172 @@
     </footer>
 
     <script>
-        let timer;
-        let isTimerRunning = false;
-        let remainingTime = 5400; // 1 hour in seconds
-        const flowerImg = document.querySelector('.flower');
+      let timer;
+      let isTimerRunning = false;
+      let remainingTime = 5400; // 1 hour in seconds
+      const flowerImg = document.querySelector(".flower");
 
-        function toggleTimer() {
-        const button = document.querySelector('.start-stop');
-        const timerDisplay = document.querySelector('h2');
+      function toggleTimer() {
+        const button = document.querySelector(".start-stop");
+        const timerDisplay = document.querySelector("h2");
 
-    if (isTimerRunning) {
-        clearInterval(timer);
-        button.textContent = 'START';
-        isTimerRunning = false;
-        remainingTime = 5400;
-        timerDisplay.textContent = 'Let\'s start';   
-        flowerImg.src = "./public/s1.gif"; //fade 1
-        window.location.href = './index3.php';
-        
-    } else {
-        if (timerDisplay.textContent === 'Good job!') {
-            // Reset everything when END is clicked
-            button.textContent = 'END';
+        if (isTimerRunning) {
+          clearInterval(timer);
+          button.textContent = "START";
+          isTimerRunning = false;
+          remainingTime = 5400;
+          timerDisplay.textContent = "Let's start";
+          flowerImg.src = "./public/t1.gif"; //fade 1
+          window.location.href = "./index.php";
+        } else {
+          if (timerDisplay.textContent === "Good job!") {
+            // Reset everything when END is clicked   
+            button.textContent = "END";
             isTimerRunning = false;
             remainingTime = 5400;
-            timerDisplay.textContent = 'Let\'s start';
-            flowerImg.src = "./public/s1.gif";//fade 1
-            window.location.href = './index3.php';
-
-        } else {
-            button.textContent = 'EXIT';
+            timerDisplay.textContent = "Let's start";
+            flowerImg.src = "./public/t1.gif"; //fade 1
+            
+          } else {
+            button.textContent = "EXIT";
             isTimerRunning = true;
             timer = setInterval(updateTimer, 1000);
-           
+          }
         }
-    }
+      }
+
+      function updateTimer() {
+        const timerDisplay = document.querySelector("h2");
+        const flowerImg = document.querySelector(".flower");
+        const button = document.querySelector(".start-stop");
+        const hours = Math.floor(remainingTime / 3600);
+        const minutes = Math.floor((remainingTime % 3600) / 60);
+        const seconds = remainingTime % 60;
+
+        // Format the time to display in HH:MM format       
+        const formattedTime = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+
+        timerDisplay.textContent = formattedTime;
+
+        if (remainingTime <= 0) {
+          // toggleTimer();
+          timerDisplay.textContent = "Good job!";
+        } else {
+          remainingTime--;
+
+          // Check if 5 seconds have passed and the image hasn't changed yet
+          if (remainingTime === 3600) {
+            flowerImg.classList.add("changed");
+            flowerImg.src = "./public/t2.gif"; //fade2
+          } else if (remainingTime === 5) {
+            flowerImg.classList.add("changed");
+            flowerImg.src = "./public/t3.gif"; //fade 3
+          } else if (remainingTime === 0) {
+            timerDisplay.textContent = "Good job!";
+            button.textContent = "END";
+          }
+        }
+      }
+
+      function formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+      }
+
+      // Ensure the script runs after the DOM is fully loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        document
+          .querySelector(".start-stop")
+          .addEventListener("click", toggleTimer);
+      });
+//--------------->> music script
+
+      
+const lofi = new Audio('<?php echo $soundPath; ?>lofi.mp3');
+const chill = new Audio('<?php echo $soundPath; ?>chill.mp3');
+const chill2 = new Audio('<?php echo $soundPath; ?>chill2.mp3');
+const miles = new Audio('<?php echo $soundPath; ?>miles.mp3');
+const study = new Audio('<?php echo $soundPath; ?>study.mp3');
+
+// selecting elements
+const prevBtn = document.querySelector('.previous');
+const playBtn = document.querySelector('.play-pause');
+const nextBtn = document.querySelector('.next');
+const songName = document.querySelector('.song-name');
+const playPauseIcon = document.querySelector('#play-pause-icon');
+
+
+const songs = [
+  { ele: lofi, audioName: 'lofi' },
+  { ele: chill, audioName: 'chill' },
+  { ele: chill2, audioName: 'chill2' },
+  { ele: miles, audioName: 'miles' },
+  { ele: study, audioName: 'study' },
+];
+
+const songImages = [
+  "./public/m1.gif",
+  "./public/m2.gif",
+  "./public/m3.gif",
+  "./public/m4.gif",
+  "./public/m5.gif",
+];
+
+for(const song of songs) {
+  song.ele.addEventListener('ended', ()=> {
+    updateSong('next');
+    playPauseSong();
+  })
 }
 
-function updateTimer() {
-    const timerDisplay = document.querySelector('h2');
-    const flowerImg = document.querySelector('.flower');
-    const button = document.querySelector('.start-stop')
-    const hours = Math.floor(remainingTime / 3600);
-    const minutes = Math.floor((remainingTime % 3600) / 60);
-    const seconds = remainingTime % 60;
+let current = 0;
+let currentSong = songs[current].ele;
+songName.textContent = songs[current].audioName;
 
-    // Format the time to display in HH:MM format
-    const formattedTime = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+playBtn.addEventListener('click',()=> {
+  playPauseSong();
+})
 
-    timerDisplay.textContent = formattedTime;
+nextBtn.addEventListener('click', () => {
+  updateSong('next');
+  playPauseSong();
+});
 
-    if (remainingTime <= 0) {
-        toggleTimer();
-    } else {
-        remainingTime--;
+prevBtn.addEventListener('click', () => {
+  updateSong('prev');
+  playPauseSong();
+});
 
-        // Check if 5 seconds have passed and the image hasn't changed yet
-        if (remainingTime === 2700) {
-            flowerImg.classList.add('changed');
-            flowerImg.src = "./public/s2.gif";//fade2
-        }
-        else if (remainingTime === 5) {
-            flowerImg.classList.add('changed');
-            flowerImg.src = "./public/s3.gif";//fade 3
-        }
-        else if (remainingTime === 0) {
-            timerDisplay.textContent = 'Good job!';
-            button.textContent = 'END';
-        }
-    }
+const updateSong = (action) => {
+  currentSong.pause();
+  currentSong.currentTime = 0;
+
+  if (action === 'next') {
+    current++;
+    if (current > songs.length - 1) current = 0;
+  }
+  if (action === 'prev') {
+    current--;
+    if (current < 0) current = songs.length - 1;
+  }
+  currentSong = songs[current].ele;
+  songName.textContent = songs[current].audioName;
+
+  // Update the musicpic image source
+  const musicPic = document.querySelector('.musicpic');
+  musicPic.src = songImages[current];
+};
+
+
+const playPauseSong = ()=> {
+  if(currentSong.paused){
+    currentSong.play();
+    playPauseIcon.className = 'ph-bold ph-pause';
+  }
+  else {
+    currentSong.pause();
+    playPauseIcon.className = 'ph-bold ph-play';
+  }
 }
-
-
-        function formatTime(time) {
-            return time < 10 ? `0${time}` : time;
-        }
-
-        // Ensure the script runs after the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('.start-stop').addEventListener('click', toggleTimer);
-        });
-        
-    </script>
-        
+    </script>      
 </body>
 </html>

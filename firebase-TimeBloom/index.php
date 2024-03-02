@@ -1,11 +1,6 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['user_login'])) {
-      header("location: login-register.php");
-    }
-
+$soundPath = "/TImeBloom/sound/";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +13,9 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="./script.js" defer></script>
     <title>HOME</title>
   </head>
+
   <body>
     <nav>
       <div class="leftside-nav">
@@ -31,7 +26,7 @@
     </nav>
     <main>
       <section class="top">
-        <span>25 MIN</span>
+        <span>30 MIN</span>
         <h2>Let's start</h2>
       </section>
       <section class="flowerbox">
@@ -86,13 +81,13 @@
           window.location.href = "./index.php";
         } else {
           if (timerDisplay.textContent === "Good job!") {
-            // Reset everything when END is clicked
+            // Reset everything when END is clicked   
             button.textContent = "END";
             isTimerRunning = false;
             remainingTime = 1800;
             timerDisplay.textContent = "Let's start";
             flowerImg.src = "./public/t1.gif"; //fade 1
-            window.location.href = "./index.php";
+            
           } else {
             button.textContent = "EXIT";
             isTimerRunning = true;
@@ -115,7 +110,8 @@
         timerDisplay.textContent = formattedTime;
 
         if (remainingTime <= 0) {
-          toggleTimer();
+          // toggleTimer();
+          timerDisplay.textContent = "Good job!";
         } else {
           remainingTime--;
 
@@ -143,7 +139,96 @@
           .querySelector(".start-stop")
           .addEventListener("click", toggleTimer);
       });
+
+      //--------------->> music script
+
+      
+const lofi = new Audio('<?php echo $soundPath; ?>lofi.mp3');
+const chill = new Audio('<?php echo $soundPath; ?>chill.mp3');
+const chill2 = new Audio('<?php echo $soundPath; ?>chill2.mp3');
+const miles = new Audio('<?php echo $soundPath; ?>miles.mp3');
+const study = new Audio('<?php echo $soundPath; ?>study.mp3');
+
+// selecting elements
+const prevBtn = document.querySelector('.previous');
+const playBtn = document.querySelector('.play-pause');
+const nextBtn = document.querySelector('.next');
+const songName = document.querySelector('.song-name');
+const playPauseIcon = document.querySelector('#play-pause-icon');
+
+
+const songs = [
+  { ele: lofi, audioName: 'lofi' },
+  { ele: chill, audioName: 'chill' },
+  { ele: chill2, audioName: 'chill2' },
+  { ele: miles, audioName: 'miles' },
+  { ele: study, audioName: 'study' },
+];
+
+const songImages = [
+  "./public/m1.gif",
+  "./public/m2.gif",
+  "./public/m3.gif",
+  "./public/m4.gif",
+  "./public/m5.gif",
+];
+
+for(const song of songs) {
+  song.ele.addEventListener('ended', ()=> {
+    updateSong('next');
+    playPauseSong();
+  })
+}
+
+let current = 0;
+let currentSong = songs[current].ele;
+songName.textContent = songs[current].audioName;
+
+playBtn.addEventListener('click',()=> {
+  playPauseSong();
+})
+
+nextBtn.addEventListener('click', () => {
+  updateSong('next');
+  playPauseSong();
+});
+
+prevBtn.addEventListener('click', () => {
+  updateSong('prev');
+  playPauseSong();
+});
+
+const updateSong = (action) => {
+  currentSong.pause();
+  currentSong.currentTime = 0;
+
+  if (action === 'next') {
+    current++;
+    if (current > songs.length - 1) current = 0;
+  }
+  if (action === 'prev') {
+    current--;
+    if (current < 0) current = songs.length - 1;
+  }
+  currentSong = songs[current].ele;
+  songName.textContent = songs[current].audioName;
+
+  // Update the musicpic image source
+  const musicPic = document.querySelector('.musicpic');
+  musicPic.src = songImages[current];
+};
+
+
+const playPauseSong = ()=> {
+  if(currentSong.paused){
+    currentSong.play();
+    playPauseIcon.className = 'ph-bold ph-pause';
+  }
+  else {
+    currentSong.pause();
+    playPauseIcon.className = 'ph-bold ph-play';
+  }
+}
     </script>
   </body>
 </html>
-

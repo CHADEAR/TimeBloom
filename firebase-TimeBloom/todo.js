@@ -1,11 +1,13 @@
-const taskInput = document.querySelector(".task-input input")
-const addButton = document.querySelector(".add-text"),
-filters = document.querySelectorAll(".filters span"),
-clearAll = document.querySelector(".clear-btn"),
-taskBox = document.querySelector(".task-box");
+const taskInput = document.querySelector(".task-input input"),
+      filters = document.querySelectorAll(".filters span"),
+      clearAll = document.querySelector(".clear-btn"),
+      taskBox = document.querySelector(".task-box"),
+      addButton = document.querySelector(".add"); // เพิ่มตัวแปร addButton เพื่อระบุปุ่ม "Add"
+
 let editId,
-isEditTask = false,
-todos = JSON.parse(localStorage.getItem("todo-list"));
+    isEditTask = false,
+    todos = JSON.parse(localStorage.getItem("todo-list"));
+
 filters.forEach(btn => {
     btn.addEventListener("click", () => {
         document.querySelector("span.active").classList.remove("active");
@@ -13,12 +15,13 @@ filters.forEach(btn => {
         showTodo(btn.id);
     });
 });
+
 function showTodo(filter) {
     let liTag = "";
-    if(todos) {
+    if (todos) {
         todos.forEach((todo, id) => {
             let completed = todo.status == "completed" ? "checked" : "";
-            if(filter == todo.status || filter == "all") {
+            if (filter == todo.status || filter == "all") {
                 liTag += `<li class="task">
                             <label for="${id}">
                                 <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${completed}>
@@ -41,18 +44,20 @@ function showTodo(filter) {
     taskBox.offsetHeight >= 300 ? taskBox.classList.add("overflow") : taskBox.classList.remove("overflow");
 }
 showTodo("all");
+
 function showMenu(selectedTask) {
     let menuDiv = selectedTask.parentElement.lastElementChild;
     menuDiv.classList.add("show");
     document.addEventListener("click", e => {
-        if(e.target.tagName != "I" || e.target != selectedTask) {
+        if (e.target.tagName != "I" || e.target != selectedTask) {
             menuDiv.classList.remove("show");
         }
     });
 }
+
 function updateStatus(selectedTask) {
     let taskName = selectedTask.parentElement.lastElementChild;
-    if(selectedTask.checked) {
+    if (selectedTask.checked) {
         taskName.classList.add("checked");
         todos[selectedTask.id].status = "completed";
     } else {
@@ -61,6 +66,7 @@ function updateStatus(selectedTask) {
     }
     localStorage.setItem("todo-list", JSON.stringify(todos))
 }
+
 function editTask(taskId, textName) {
     editId = taskId;
     isEditTask = true;
@@ -68,24 +74,27 @@ function editTask(taskId, textName) {
     taskInput.focus();
     taskInput.classList.add("active");
 }
+
 function deleteTask(deleteId, filter) {
     isEditTask = false;
     todos.splice(deleteId, 1);
     localStorage.setItem("todo-list", JSON.stringify(todos));
     showTodo(filter);
 }
+
 clearAll.addEventListener("click", () => {
     isEditTask = false;
     todos.splice(0, todos.length);
     localStorage.setItem("todo-list", JSON.stringify(todos));
-    showTodo()
+    showTodo();
 });
-addButton.addEventListener("click", () => {
+
+taskInput.addEventListener("keyup", e => {
     let userTask = taskInput.value.trim();
-    if(userTask) {
-        if(!isEditTask) {
+    if (e.key == "Enter" && userTask) {
+        if (!isEditTask) {
             todos = !todos ? [] : todos;
-            let taskInfo = {name: userTask, status: "pending"};
+            let taskInfo = { name: userTask, status: "pending" };
             todos.push(taskInfo);
         } else {
             isEditTask = false;
@@ -96,3 +105,24 @@ addButton.addEventListener("click", () => {
         showTodo(document.querySelector("span.active").id);
     }
 });
+
+// เพิ่ม Event Listener สำหรับปุ่ม "Add"
+addButton.addEventListener("click", addTask);
+
+// เพิ่มฟังก์ชัน addTask() เพื่อเพิ่มงานใหม่
+function addTask() {
+    let userTask = taskInput.value.trim();
+    if (userTask) {
+        if (!isEditTask) {
+            todos = !todos ? [] : todos;
+            let taskInfo = { name: userTask, status: "pending" };
+            todos.push(taskInfo);
+        } else {
+            isEditTask = false;
+            todos[editId].name = userTask;
+        }
+        taskInput.value = "";
+        localStorage.setItem("todo-list", JSON.stringify(todos));
+        showTodo(document.querySelector("span.active").id);
+    }
+}

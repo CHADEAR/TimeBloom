@@ -1,3 +1,4 @@
+/* Import Google Font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 *{
     margin: 0;
@@ -51,7 +52,13 @@ body{
     top: 50%;
     position: absolute;
     transform: translate(17px, -50%);
-    color: #656464;
+}
+
+.add{
+    padding: 3px;
+    position: absolute;
+    right: 37px;
+    top: 12px;
 }
 
 .task-input input{
@@ -71,19 +78,6 @@ body{
 }
 .task-input input::placeholder{
     color: #bfbfbf;
-}
-.task-input .add-text{
-    top: 50%;
-    left: 80%;
-    outline: none;
-    border: none;
-    color: #fff;
-    font-size: 13px;
-    padding: 7px 13px;
-    border-radius: 4px;
-    position: absolute;
-    transform: translate(-15px, -50%);
-    background: rgb(150, 206, 238);
 }
 .controls, li{
     display: flex;
@@ -224,7 +218,6 @@ body{
 .settings li i{
     padding-right: 8px;
 }
-
 @media screen and (max-width: 767px) {
     .team-member img {
 width: 256px;
