@@ -1,3 +1,12 @@
+
+<?php
+    session_start();
+    if (!isset($_SESSION['user_login'])) {
+      header("location: login-register.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +21,11 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background: url(./public/bg1.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: bottom;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -176,7 +189,7 @@ h2 {
 <script>
 
 document.querySelector(".goback").addEventListener("click", function() {
-            window.location.href = "index.php";
+            window.location.href = "index1.php";
         });
 
     // JavaScript สำหรับการเพิ่ม, แสดง, แก้ไข และลบงานในรายการ

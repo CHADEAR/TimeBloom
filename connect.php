@@ -1,6 +1,6 @@
 <?php
 
-$objCon = mysqli_connect("sql101.infinityfree.com", "if0_35967055", "mYNKlaJeRTKDA","if0_35967055_user");
+$objCon = mysqli_connect("sql313.infinityfree.com", "if0_36085009", "ctSPxpUZXtW","if0_36085009_users");
 
 if ($objCon -> connect_errno){
     echo "Failed " . $objCon -> connect_error;

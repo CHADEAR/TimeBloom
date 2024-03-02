@@ -5,60 +5,70 @@
     }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <title>HOME</title>
+  </head>
 
-</head>
-<body>
+  <body>
     <nav>
-        <div class="leftside-nav">
-            <img src="./public/webapp-logo.png" class="logo">
-        <a href="./todo.php"><i class='bx bx-menu'></i></a>
-        </div>
-        <button class="logout">logout</button>
+      <div class="leftside-nav">
+        <img src="./public/webapp-logo.png" class="logo" />
+        <a href="./todo.php"><i class="bx bx-menu"></i></a>
+      </div>
+      <input type="button" class="logout" onclick="window.location.href='logout.php'" value="logout">
     </nav>
     <main>
-        <section class="top">
-            <span>1 HOUR</span> 
-            <h2>Let's start</h2>
-        </section>
-        <section class="flowerbox">
-            <a href="./index2.php"><i class='bx bxs-left-arrow'></i></a>
-            <div class="meshpic">
-                <img src="./public/s1.gif" class="flower">
-                <img src="./public/island.png" class="island"> 
-            </div>
-            <a href="./index1.php"><i class='bx bxs-right-arrow' ></i></a>
-        </section>
-        <button class="start-stop" id="END"> START </button>
+      <section class="top">
+        <span>30 MIN</span>
+        <h2>Let's start</h2>
+      </section>
+      <section class="flowerbox">
+        <a href="./index3.php"><i class="bx bxs-left-arrow"></i></a>
+        <div class="meshpic">
+          <img src="./public/t1.gif" class="flower" />
+          <img src="./public/island.png" class="island" />
+        </div>
+        <a href="./index2.php"><i class="bx bxs-right-arrow"></i></a>
+      </section>
+      <button class="start-stop" id="END">START</button>
     </main>
     <footer>
-        <section class="bottom">
-            <img src="./public/m1.gif" class="musicpic" />
-            <div class="music">
-                <span class="playing">Now playing :  <span class="song-name"></span></span>
-                <div class="controls">
-                <button class="btn previous"><i class="ph-bold ph-skip-back"></i></button>
-                <button class="btn play-pause">
-                    <i id="play-pause-icon" class="ph-bold ph-play"></i>
-                </button>
-                <button class="btn next"><i class="ph-bold ph-skip-forward"></i></button>
-                </div>
-            </div>
-        </section>
+      <section class="bottom">
+        <img src="./public/m1.gif" class="musicpic" />
+        <div class="music">
+          <span class="playing"
+            >Now playing : <span class="song-name"></span
+          ></span>
+          <div class="controls">
+            <button class="btn previous">
+              <i class="ph-bold ph-skip-back"></i>
+            </button>
+            <button class="btn play-pause">
+              <i id="play-pause-icon" class="ph-bold ph-play"></i>
+            </button>
+            <button class="btn next">
+              <i class="ph-bold ph-skip-forward"></i>
+            </button>
+          </div>
+        </div>
+      </section>
     </footer>
 
     <script>
       let timer;
       let isTimerRunning = false;
-      let remainingTime = 5400; // 1 hour in seconds
+      let remainingTime = 1800; // 1 hour in seconds
       const flowerImg = document.querySelector(".flower");
 
       function toggleTimer() {
@@ -69,7 +79,7 @@
           clearInterval(timer);
           button.textContent = "START";
           isTimerRunning = false;
-          remainingTime = 5400;
+          remainingTime = 1800;
           timerDisplay.textContent = "Let's start";
           flowerImg.src = "./public/t1.gif"; //fade 1
           window.location.href = "./index.php";
@@ -78,7 +88,7 @@
             // Reset everything when END is clicked   
             button.textContent = "END";
             isTimerRunning = false;
-            remainingTime = 5400;
+            remainingTime = 1800;
             timerDisplay.textContent = "Let's start";
             flowerImg.src = "./public/t1.gif"; //fade 1
             
@@ -98,8 +108,8 @@
         const minutes = Math.floor((remainingTime % 3600) / 60);
         const seconds = remainingTime % 60;
 
-        // Format the time to display in HH:MM format       
-        const formattedTime = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`;
+        // Format the time to display in HH:MM format
+        const formattedTime = `${formatTime(minutes)}:${formatTime(seconds)}`;
 
         timerDisplay.textContent = formattedTime;
 
@@ -110,7 +120,7 @@
           remainingTime--;
 
           // Check if 5 seconds have passed and the image hasn't changed yet
-          if (remainingTime === 3600) {
+          if (remainingTime === 1020) {
             flowerImg.classList.add("changed");
             flowerImg.src = "./public/t2.gif"; //fade2
           } else if (remainingTime === 5) {
@@ -133,7 +143,8 @@
           .querySelector(".start-stop")
           .addEventListener("click", toggleTimer);
       });
-//--------------->> music script
+
+      //--------------->> music script
 
       
 const lofi = new Audio('<?php echo $soundPath; ?>lofi.mp3');
@@ -222,6 +233,6 @@ const playPauseSong = ()=> {
     playPauseIcon.className = 'ph-bold ph-play';
   }
 }
-    </script>      
-</body>
+    </script>
+  </body>
 </html>

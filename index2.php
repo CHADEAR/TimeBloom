@@ -1,8 +1,10 @@
 <?php
-$soundPath = "/TImeBloom/sound/";
+    session_start();
+    if (!isset($_SESSION['user_login'])) {
+      header("location: login-register.php");
+    }
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +30,7 @@ $soundPath = "/TImeBloom/sound/";
             <h2>Let's start</h2>
         </section>
         <section class="flowerbox">
-            <a href="./index.php"><i class='bx bxs-left-arrow'></i></a>
+            <a href="./index1.php"><i class='bx bxs-left-arrow'></i></a>
             <div class="meshpic">
                 <img src="./public/f1.gif" class="flower">
                 <img src="./public/island.png" class="island"> 

@@ -37,8 +37,9 @@ nav img{
 
 .logout{
     background-color: rgb(234, 255, 255);
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 10px;
+    cursor: pointer;
     border: none;
 }
 
