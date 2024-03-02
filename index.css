@@ -35,6 +35,13 @@ nav img{
 
 }
 
+.logout{
+    background-color: rgb(234, 255, 255);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+}
+
 .leftside-nav{
     display: flex;
     flex-direction: column;
