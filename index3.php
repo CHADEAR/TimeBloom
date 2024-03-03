@@ -1,8 +1,5 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['user_login'])) {
-      header("location: login-register.php");
-    }
+    $soundPath = "./sound/";
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +23,7 @@
     </nav>
     <main>
         <section class="top">
-            <span>1 HOUR</span> 
+            <span>90 MIN</span> 
             <h2>Let's start</h2>
         </section>
         <section class="flowerbox">

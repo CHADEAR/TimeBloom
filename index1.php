@@ -1,9 +1,6 @@
-<?php
-    session_start();
-    if (!isset($_SESSION['user_login'])) {
-      header("location: login-register.php");
-    }
 
+<?php
+  $soundPath = "./sound/";
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +65,7 @@
     <script>
       let timer;
       let isTimerRunning = false;
-      let remainingTime = 1800; // 1 hour in seconds
+      let remainingTime = 10; // 1 hour in seconds
       const flowerImg = document.querySelector(".flower");
 
       function toggleTimer() {
@@ -79,16 +76,16 @@
           clearInterval(timer);
           button.textContent = "START";
           isTimerRunning = false;
-          remainingTime = 1800;
+          remainingTime = 10;
           timerDisplay.textContent = "Let's start";
           flowerImg.src = "./public/t1.gif"; //fade 1
-          window.location.href = "./index.php";
+          window.location.href = "./index1.php";
         } else {
           if (timerDisplay.textContent === "Good job!") {
             // Reset everything when END is clicked   
             button.textContent = "END";
             isTimerRunning = false;
-            remainingTime = 1800;
+            remainingTime = 10;
             timerDisplay.textContent = "Let's start";
             flowerImg.src = "./public/t1.gif"; //fade 1
             
@@ -120,10 +117,10 @@
           remainingTime--;
 
           // Check if 5 seconds have passed and the image hasn't changed yet
-          if (remainingTime === 1020) {
+          if (remainingTime === 7) {
             flowerImg.classList.add("changed");
             flowerImg.src = "./public/t2.gif"; //fade2
-          } else if (remainingTime === 5) {
+          } else if (remainingTime === 4) {
             flowerImg.classList.add("changed");
             flowerImg.src = "./public/t3.gif"; //fade 3
           } else if (remainingTime === 0) {
@@ -145,6 +142,7 @@
       });
 
       //--------------->> music script
+
 
       
 const lofi = new Audio('<?php echo $soundPath; ?>lofi.mp3');
