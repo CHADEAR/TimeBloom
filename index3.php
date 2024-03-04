@@ -1,6 +1,10 @@
 <?php
-    $soundPath = "./sound/";
+    session_start();
+    if (!isset($_SESSION['user_login'])) {
+      header("location: login-register.php");
+    }
 
+     $soundPath = "./sound/";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +73,7 @@
           remainingTime = 5400;
           timerDisplay.textContent = "Let's start";
           flowerImg.src = "./public/t1.gif"; //fade 1
-          window.location.href = "./index.php";
+          window.location.href = "./index3.php";
         } else {
           if (timerDisplay.textContent === "Good job!") {
             // Reset everything when END is clicked   
@@ -156,7 +160,7 @@ const songs = [
 ];
 
 const songImages = [
-  "./public/m1.gif",
+  "./public/m1.1.gif",
   "./public/m2.gif",
   "./public/m3.gif",
   "./public/m4.gif",

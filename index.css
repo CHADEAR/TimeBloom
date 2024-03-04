@@ -179,41 +179,6 @@ footer {
 }
 
 
-    .flowerbox {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .flowerbox .meshpic {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .flowerbox .flower {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: filter 1s ease-in-out;
-    }
-    
-    .flowerbox .island {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: opacity 1s ease-in-out;
-        opacity: 0; /* เริ่มต้นที่ความทึ่มมากขึ้น */
-    }
-    
-    .flowerbox.changed .flower {
-        filter: blur(5px); /* เพิ่มเอฟเฟ็กต์เบลอเมื่อมีการเปลี่ยนแปลง */
-    }
-    
-    .flowerbox.changed .island {
-        opacity: 1; /* เพิ่มความทึ่มเมื่อมีการเปลี่ยนแปลง */
-    }
-
-
 
 
 
