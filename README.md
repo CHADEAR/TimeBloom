@@ -23,7 +23,9 @@ To run the project without login, **comment out these lines** at the very top of
     $soundPath = "./sound/";
 ?> -->
 
-## How to Run
+---
+
+## How to run
 
 1. Copy the entire project folder (timebloom/) into: C:\xampp\htdocs\
 
