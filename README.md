@@ -1,4 +1,17 @@
-# TimeBlooming – Local Setup Guide
+# TimeBloom
+
+**TimeBloom** is a productivity application that motivates users to stay focused by **planting virtual flowers** as they work.  
+It combines a **timer** for time-tracking and a **user-friendly to-do list** to help users organize and prioritize tasks effectively.  
+The app also provides **relaxing background music** to reduce stress and improve concentration.
+
+## Key Features
+- **Focus Timer:** Track sessions to build momentum and measure productivity.
+- **Virtual Flowers:** Grow a garden as a visual reward for staying focused.
+- **To-Do List:** Create, sort, and prioritize tasks with a clean interface.
+- **Relaxing Music:** Optional ambient tracks to help you stay calm and focused.
+
+
+# TimeBloom – Local Setup Guide
 
 This project is built with **PHP + HTML + CSS** and designed to run locally using **XAMPP**.
 
