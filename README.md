@@ -23,7 +23,7 @@ To run the project without login, **comment out these lines** at the very top of
     $soundPath = "./sound/";
 ?> -->
 
----
+```
 
 ## How to run
 
